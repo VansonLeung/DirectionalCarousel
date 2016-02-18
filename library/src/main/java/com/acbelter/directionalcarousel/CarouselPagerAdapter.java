@@ -70,6 +70,11 @@ public class CarouselPagerAdapter<T extends Parcelable> extends FragmentPagerAda
         mCallback = listener;
     }
 
+    OnPageChangeListener onPageChangeListener;
+    public void setOnPageChangeListener(OnPageChangeListener onPageChangeListener) {
+        this.onPageChangeListener = onPageChangeListener;
+    }
+
     public void sendSingleTap(View view, T item) {
         if (mCallback != null) {
             mCallback.onSingleTap(view, item);
@@ -142,6 +147,10 @@ public class CarouselPagerAdapter<T extends Parcelable> extends FragmentPagerAda
                 break;
             }
         }
+
+        if (onPageChangeListener != null) {
+            onPageChangeListener.onPageScrolled(position, positionOffset, positionOffsetPixels);
+        }
     }
 
     @Override
@@ -160,6 +169,10 @@ public class CarouselPagerAdapter<T extends Parcelable> extends FragmentPagerAda
             scaleAdjacentPages(position, scalingPages, mConfig.smallScale);
         } else if (mConfig.scrollScalingMode == CarouselConfig.SCROLL_MODE_NONE) {
             scaleAdjacentPages(position, scalingPages, mConfig.bigScale);
+        }
+
+        if (onPageChangeListener != null) {
+            onPageChangeListener.onPageSelected(position);
         }
     }
 
@@ -197,6 +210,10 @@ public class CarouselPagerAdapter<T extends Parcelable> extends FragmentPagerAda
             if (mConfig.scrollScalingMode == CarouselConfig.SCROLL_MODE_BIG_ALL) {
                 scaleAdjacentPages(mCurrentPosition, scalingPages, mConfig.smallScale);
             }
+        }
+
+        if (onPageChangeListener != null) {
+            onPageChangeListener.onPageScrollStateChanged(state);
         }
     }
 

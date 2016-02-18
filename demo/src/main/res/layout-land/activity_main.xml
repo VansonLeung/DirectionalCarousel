@@ -7,13 +7,22 @@
               android:layout_height="match_parent"
               tools:context=".MainActivity">
 
-    <com.acbelter.directionalcarousel.CarouselViewPager
-      android:id="@+id/carousel_pager"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:background="@android:color/black"
-      android:orientation="horizontal"
-      android:layout_gravity="center"
-      carousel:infinite="false"
-      carousel:scrollScalingMode="bigAll"/>
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/viewTopic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <com.acbelter.directionalcarousel.CarouselViewPager
+                android:id="@+id/carousel_pager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/black"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                carousel:infinite="false"
+                carousel:scrollScalingMode="bigAll"/>
+        </FrameLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </FrameLayout>
