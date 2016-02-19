@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <com.acbelter.directionalcarousel.page.PageLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:orientation="vertical"
-  android:gravity="center">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingLeft="150dp"
+    android:paddingRight="150dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <com.acbelter.directionalcarousel.fglayout.ForegroundLinearLayout
-      android:id="@+id/page_content"
-      android:layout_width="@dimen/page_content_width"
-      android:layout_height="@dimen/page_content_height"
-      android:clickable="true"
-      android:gravity="center"
-      android:background="@android:color/darker_gray"
-      android:foreground="@drawable/item_selector">
+    <com.acbelter.directionalcarouseldemo.CoverFlowCard
+        android:id="@+id/page_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:gravity="center"
+        android:background="@android:color/darker_gray"
+        android:foreground="@drawable/item_selector">
 
         <TextView
-          android:id="@+id/title"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:textSize="20sp"
-          android:gravity="center"
-          tools:text="Title"/>
-    </com.acbelter.directionalcarousel.fglayout.ForegroundLinearLayout>
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:gravity="center"
+            tools:text="Title"/>
+
+        <Button
+            android:text="TEST"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </com.acbelter.directionalcarouseldemo.CoverFlowCard>
 </com.acbelter.directionalcarousel.page.PageLayout>

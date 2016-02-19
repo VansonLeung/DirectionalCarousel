@@ -60,13 +60,25 @@ public class MainActivity extends FragmentActivity implements OnPageClickListene
             mItems = savedInstanceState.getParcelableArrayList("items");
         }
 
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                init();
+            }
+        }, 500);
+    }
+
+    void init() {
+
         mViewPager = (CarouselViewPager) findViewById(R.id.carousel_pager);
+        mViewPager.setPageTransformer(false, new CoverFlowTransformer(this, null));
+
         mPagerAdapter = new CarouselPagerAdapter<MyPageItem>(getSupportFragmentManager(),
                 MyPageFragment.class, R.layout.page_layout, mItems);
         mPagerAdapter.setOnPageClickListener(this);
 
         mViewPager.setAdapter(mPagerAdapter);
-
 
         mViewPager.setOnGenericMotionListener(new View.OnGenericMotionListener() {
             @Override
@@ -143,8 +155,8 @@ public class MainActivity extends FragmentActivity implements OnPageClickListene
                 Log.e("  current Page", " getCurrentItem(): " + mViewPager.getCurrentItem());
             }
         });
-    }
 
+    }
 
 
     void initMeasureProgress(int startPos) {
@@ -184,6 +196,7 @@ public class MainActivity extends FragmentActivity implements OnPageClickListene
                 isBusyLoadingMore = false;
                 loading.setVisibility(View.GONE);
                 swipeRefreshLayout.setRefreshing(false);
+                mPagerAdapter.notifyDataSetChanged();
             }
         }, 2000);
     }
@@ -200,10 +213,10 @@ public class MainActivity extends FragmentActivity implements OnPageClickListene
                 isBusyLoadingMore = false;
                 loading.setVisibility(View.GONE);
                 swipeRefreshLayout.setRefreshing(false);
+                mPagerAdapter.notifyDataSetChanged();
             }
         }, 2000);
     }
-
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {

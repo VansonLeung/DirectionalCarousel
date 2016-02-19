@@ -33,7 +33,7 @@ import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.View.OnTouchListener;
 import android.widget.FrameLayout;
 
-public class CarouselViewPager extends ViewPager implements OnTouchListener {
+public class CarouselViewPager extends VelocityViewPager implements OnTouchListener {
     public static final float DEFAULT_SIDE_PAGES_VISIBLE_PART = 0.5f;
     private static final String TAG = CarouselViewPager.class.getSimpleName();
     private static final boolean DEBUG = false;
